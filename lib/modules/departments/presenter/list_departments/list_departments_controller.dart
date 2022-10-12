@@ -11,8 +11,8 @@ class ListDepartmentsController extends GetxController {
     required this.getAllDepartments,
     required this.deleteDepartment,
   });
-  final GetAllDepartmentsImpl getAllDepartments;
-  final DeleteDepartmentImpl deleteDepartment;
+  final GetAllDepartments getAllDepartments;
+  final DeleteDepartment deleteDepartment;
   var departmentsList = <DepartmentModel>[].obs;
 
   @override
@@ -35,10 +35,12 @@ class ListDepartmentsController extends GetxController {
 
   Future<void> getDepartments() async {
     departmentsList.clear();
-    final result = await getAllDepartments();
+    final result = getAllDepartments();
     result.fold((l) => errorSnackBar(l.message), (r) {
       departmentsList.obs.update(
-        (list) => list?.addAll(r),
+        (list) => r.forEach((element) {
+          list!.add(element as DepartmentModel);
+        }),
       );
     });
   }

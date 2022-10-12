@@ -1,15 +1,15 @@
 import 'package:dartz/dartz.dart';
 
 import '../../../../core/errors/errors.dart';
-import '../../infra/models/student_model.dart';
+import '../entities/student.dart';
 
 abstract class StudentsRepository {
-  Either<FailureStudents, List<StudentModel?>> getAllStudents(
+  Either<FailureStudents, List<Student>> getAllStudents(
       {required List<String> studentsUid});
-  Future<Either<FailureStudents, StudentModel>> getStudent(String key);
+  Future<Either<FailureStudents, Student>> getStudent(String key);
   Future<Either<FailureStudents, Unit>> addStudent(
-      {required StudentModel student, required String departmentKey});
+      {required Student student, required String departmentKey});
   Future<Either<FailureStudents, Unit>> editStudent(
-      String key, StudentModel student);
+      String key, Student student);
   Future<Either<FailureStudents, Unit>> deleteStudent(String key);
 }

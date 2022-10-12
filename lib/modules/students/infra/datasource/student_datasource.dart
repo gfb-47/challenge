@@ -1,12 +1,12 @@
 import 'package:dartz/dartz.dart';
 
-import '../models/student_model.dart';
+import '../../domain/entities/student.dart';
 
 abstract class StudentsDataSource {
-  List<StudentModel> getAllStudents({required List<String> studentsUid});
-  Future<StudentModel> getStudent(String key);
+  List<Student> getAllStudents({required List<String> studentsUid});
+  Future<Student> getStudent(String key);
   Future<Unit> addStudent(
-      {required StudentModel student, required String departmentKey});
-  Future<Unit> editStudent(String key, StudentModel student);
+      {required Student student, required String departmentKey});
+  Future<Unit> editStudent(String key, Student student);
   Future<Unit> deleteStudent(String key);
 }

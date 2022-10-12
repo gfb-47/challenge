@@ -3,21 +3,21 @@
 import 'package:dartz/dartz.dart';
 
 import '../../../../core/errors/errors.dart';
-import '../../infra/models/student_model.dart';
-import '../../infra/repositories/student_repository_impl.dart';
+import '../entities/student.dart';
+import '../repositories/students_repository.dart';
 
 abstract class GetAllStudents {
-  Either<FailureStudents, List<StudentModel>> call(
+  Either<FailureStudents, List<Student>> call(
       {required List<String> studentsUid});
 }
 
 class GetAllStudentsImpl implements GetAllStudents {
   GetAllStudentsImpl({required this.repository});
 
-  final StudentsRepositoryImpl repository;
+  final StudentsRepository repository;
 
   @override
-  Either<FailureStudents, List<StudentModel>> call(
+  Either<FailureStudents, List<Student>> call(
       {required List<String> studentsUid}) {
     return repository.getAllStudents(studentsUid: studentsUid);
   }

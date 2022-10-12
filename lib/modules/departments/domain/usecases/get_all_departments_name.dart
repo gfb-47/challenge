@@ -3,20 +3,20 @@
 import 'package:dartz/dartz.dart';
 
 import '../../../../core/errors/errors.dart';
-import '../../infra/models/department_model.dart';
-import '../../infra/repositories/department_repository_impl.dart';
+import '../entities/department.dart';
+import '../repositories/departments_repository.dart';
 
 abstract class GetAllDepartments {
-  Either<FailureDepartments, List<DepartmentModel>> call();
+  Either<FailureDepartments, List<Department>> call();
 }
 
 class GetAllDepartmentsImpl implements GetAllDepartments {
   GetAllDepartmentsImpl({required this.repository});
 
-  final DepartmentsRepositoryImpl repository;
+  final DepartmentsRepository repository;
 
   @override
-  Either<FailureDepartments, List<DepartmentModel>> call() {
+  Either<FailureDepartments, List<Department>> call() {
     return repository.getAllDepartments();
   }
 }

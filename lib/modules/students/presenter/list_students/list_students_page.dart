@@ -5,7 +5,6 @@ import 'package:google_fonts/google_fonts.dart';
 
 import '../../../../core/core_modules/presenter/widgets/home/market_card_widget.dart';
 import '../../../../core/utils/consts.dart';
-import '../../../../core/utils/logger.dart';
 import 'list_students_controller.dart';
 
 ///Class HomePage
@@ -18,7 +17,7 @@ class ListStudentsPage extends GetView<ListStudentsController> {
     final productWidht = Get.width / 2;
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Color(0xFFF68A0A),
+        backgroundColor: const Color(0xFFF68A0A),
         elevation: 0,
         leading: BackButton(
           onPressed: () => Get.back(),
@@ -26,19 +25,19 @@ class ListStudentsPage extends GetView<ListStudentsController> {
         ),
       ),
       floatingActionButton: FloatingActionButton(
-          backgroundColor: Color(0xFFF68A0A),
+          backgroundColor: const Color(0xFFF68A0A),
+          onPressed: controller.goToAddStudent,
           child: const Icon(
             Icons.add,
             color: Colors.white,
-          ),
-          onPressed: controller.goToAddStudent),
-      backgroundColor: Color(0xFFF4F5Fc),
+          )),
+      backgroundColor: const Color(0xFFF4F5Fc),
       body: NestedScrollView(
         headerSliverBuilder: (context, innerBoxIsScrolled) {
           return <Widget>[
             CupertinoSliverNavigationBar(
               border: null,
-              backgroundColor: Color(0xFFF4F5Fc),
+              backgroundColor: const Color(0xFFF4F5Fc),
               padding: const EdgeInsetsDirectional.only(
                   top: 8, start: 15, end: 15, bottom: 8),
               leading: Container(
@@ -69,7 +68,7 @@ class ListStudentsPage extends GetView<ListStudentsController> {
           padding: const EdgeInsets.symmetric(horizontal: 15),
           child: Column(
             children: [
-              SizedBox(
+              const SizedBox(
                 height: 24,
               ),
               Expanded(

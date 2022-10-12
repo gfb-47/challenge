@@ -5,8 +5,7 @@ import 'package:dartz/dartz.dart';
 import 'package:hive/hive.dart';
 
 import '../../../app/app_boxes.dart';
-import '../../../core/utils/consts.dart';
-import '../../departments/external/departments_local_datasource.dart';
+import '../../departments/infra/datasource/departments_datasource.dart';
 import '../domain/entities/student.dart';
 import '../infra/datasource/student_datasource.dart';
 import '../infra/models/student_model.dart';
@@ -19,12 +18,12 @@ class StudentsLocalDatasource implements StudentsDataSource {
     studentsBox = appBoxes.mapBoxes['students']!;
   }
   AppBoxes appBoxes;
-  DepartmentsLocalDatasource departmentsLocalDatasource;
+  DepartmentsDataSource departmentsLocalDatasource;
   late Box<dynamic> studentsBox;
 
   @override
   Future<Unit> addStudent(
-      {required StudentModel student, required String departmentKey}) async {
+      {required Student student, required String departmentKey}) async {
     final result = departmentsLocalDatasource.addStudentToDepartment(
         student: student, departmentKey: departmentKey);
     studentsBox.put(student.uuid, student);

@@ -23,7 +23,7 @@ class AppRoutes {
 
   GetPage get splashPage => GetPage(
         name: splash,
-        page: () => SplashPage(),
+        page: () => const SplashPage(),
         transition: Transition.cupertino,
       );
 
@@ -36,7 +36,7 @@ class AppRoutes {
 
   GetPage get addDepartmentsPage => GetPage(
         name: addDepartment,
-        page: () => AddDepartmentPage(),
+        page: () => const AddDepartmentPage(),
         binding: AddDepartmentsBinding(),
         transition: Transition.cupertino,
       );

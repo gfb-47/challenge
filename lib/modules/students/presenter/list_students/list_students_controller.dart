@@ -2,6 +2,7 @@ import 'package:get/get.dart';
 
 import '../../../../app/app_routes.dart';
 import '../../../../components/core/snackbar.dart';
+import '../../../departments/domain/entities/department.dart';
 import '../../../departments/infra/models/department_model.dart';
 import '../../domain/usecases/delete_student.dart';
 import '../../domain/usecases/get_all_students.dart';
@@ -13,10 +14,10 @@ class ListStudentsController extends GetxController {
     required this.getAllStudents,
   });
 
-  final GetAllStudentsImpl getAllStudents;
-  final DeleteStudentImpl deleteStudent;
+  final GetAllStudents getAllStudents;
+  final DeleteStudent deleteStudent;
   var studentsList = <StudentModel?>[].obs;
-  DepartmentModel department = Get.arguments as DepartmentModel;
+  Department department = Get.arguments as DepartmentModel;
 
   @override
   Future<void> onInit() async {
@@ -26,11 +27,13 @@ class ListStudentsController extends GetxController {
 
   void getStudents() {
     studentsList.clear();
-    List<String> studentsUid = department.studentsUidList;
+    final List<String> studentsUid = department.studentsUidList;
     final result = getAllStudents(studentsUid: studentsUid);
     result.fold((l) => errorSnackBar(l.message), (r) {
       studentsList.obs.update(
-        (list) => list?.addAll(r),
+        (list) => r.forEach((element) {
+          list!.add(element as StudentModel);
+        }),
       );
     });
   }

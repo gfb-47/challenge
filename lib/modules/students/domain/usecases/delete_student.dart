@@ -1,7 +1,7 @@
 import 'package:dartz/dartz.dart';
 
 import '../../../../core/errors/errors.dart';
-import '../../infra/repositories/student_repository_impl.dart';
+import '../repositories/students_repository.dart';
 
 abstract class DeleteStudent {
   Future<Either<FailureStudents, Unit>> call(String key);
@@ -9,7 +9,7 @@ abstract class DeleteStudent {
 
 class DeleteStudentImpl implements DeleteStudent {
   DeleteStudentImpl({required this.repository});
-  final StudentsRepositoryImpl repository;
+  final StudentsRepository repository;
 
   @override
   Future<Either<FailureStudents, Unit>> call(String key) {

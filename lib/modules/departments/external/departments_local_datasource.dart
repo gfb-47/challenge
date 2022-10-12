@@ -21,7 +21,7 @@ class DepartmentsLocalDatasource implements DepartmentsDataSource {
 
   @override
   Future<Unit> addDepartment({required Department department}) async {
-    if (department.description == null || department.description == '') {
+    if (department.description == '') {
       throw InvalidDepartmentDescription(message: 'Invalid description');
     }
     await departmentsBox.put(department.uuid, department);

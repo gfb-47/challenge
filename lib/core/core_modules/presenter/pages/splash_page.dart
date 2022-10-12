@@ -4,7 +4,6 @@ import 'package:lottie/lottie.dart';
 
 import '../../../../app/app_routes.dart';
 import '../../../utils/consts.dart';
-import '../controllers/splash_page_controller.dart';
 import '../widgets/company_name.dart';
 
 ///Splash Screen of the application

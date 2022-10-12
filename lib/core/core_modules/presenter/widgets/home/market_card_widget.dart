@@ -2,20 +2,19 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class MarketCardWidget extends StatelessWidget {
-  final String imageUrl;
-  final String title;
-  final String age;
-  final VoidCallback onTap;
-  final VoidCallback onDeleteTap;
-
   const MarketCardWidget({
-    Key? key,
+    super.key,
     required this.imageUrl,
     required this.title,
     required this.age,
     required this.onTap,
     required this.onDeleteTap,
-  }) : super(key: key);
+  });
+  final String imageUrl;
+  final String title;
+  final String age;
+  final VoidCallback onTap;
+  final VoidCallback onDeleteTap;
 
   @override
   Widget build(BuildContext context) {
@@ -28,17 +27,16 @@ class MarketCardWidget extends StatelessWidget {
           decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(20), color: Colors.white),
           child: Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
-                  Icon(
+                  const Icon(
                     Icons.edit,
                     color: Color(0xFFF68A0A),
                   ),
                   IconButton(
-                    icon: Icon(
+                    icon: const Icon(
                       Icons.delete,
                       color: Colors.red,
                     ),
@@ -46,16 +44,16 @@ class MarketCardWidget extends StatelessWidget {
                   ),
                 ],
               ),
-              SizedBox(
+              const SizedBox(
                 height: 10,
               ),
               Container(
-                padding: EdgeInsets.only(top: 10),
+                padding: const EdgeInsets.only(top: 10),
                 height: 90,
                 width: 90,
                 child: Image.asset(imageUrl),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 20,
               ),
               Text(
@@ -64,14 +62,14 @@ class MarketCardWidget extends StatelessWidget {
                   fontWeight: FontWeight.bold,
                 ),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 20,
               ),
               Text(age,
                   overflow: TextOverflow.ellipsis,
                   style: GoogleFonts.roboto(
                     fontWeight: FontWeight.bold,
-                    color: Color(0xFFFF9B2B),
+                    color: const Color(0xFFFF9B2B),
                     fontSize: 20,
                   )),
             ],

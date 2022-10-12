@@ -6,17 +6,16 @@ import '../../../../core/errors/errors.dart';
 import '../../../../core/utils/consts.dart';
 import '../../domain/entities/department.dart';
 import '../../domain/repositories/departments_repository.dart';
-import '../../external/departments_local_datasource.dart';
-import '../models/department_model.dart';
+import '../datasource/departments_datasource.dart';
 
 class DepartmentsRepositoryImpl implements DepartmentsRepository {
   DepartmentsRepositoryImpl({required this.datasource});
 
-  final DepartmentsLocalDatasource datasource;
+  final DepartmentsDataSource datasource;
 
   @override
   Future<Either<FailureDepartments, Unit>> addDepartment(
-      DepartmentModel department) async {
+      Department department) async {
     try {
       final result = await datasource.addDepartment(department: department);
       return Right(result);
@@ -35,7 +34,7 @@ class DepartmentsRepositoryImpl implements DepartmentsRepository {
   Future<Either<FailureDepartments, Unit>> deleteDepartment(String key) async {
     try {
       await datasource.deleteDepartment(key: key);
-      return Right(unit);
+      return const Right(unit);
     } on DepartmentDatasourceError catch (e) {
       e.message = "The department couldn't be deleted from the database";
       return Left(e);
@@ -45,7 +44,7 @@ class DepartmentsRepositoryImpl implements DepartmentsRepository {
   }
 
   @override
-  Either<FailureDepartments, List<DepartmentModel>> getAllDepartments() {
+  Either<FailureDepartments, List<Department>> getAllDepartments() {
     try {
       final result = datasource.getAllDepartments();
 

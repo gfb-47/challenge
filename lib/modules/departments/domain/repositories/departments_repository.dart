@@ -1,11 +1,10 @@
 import 'package:dartz/dartz.dart';
 
 import '../../../../core/errors/errors.dart';
-import '../../infra/models/department_model.dart';
+import '../entities/department.dart';
 
 abstract class DepartmentsRepository {
-  Either<FailureDepartments, List<DepartmentModel>> getAllDepartments();
-  Future<Either<FailureDepartments, Unit>> addDepartment(
-      DepartmentModel department);
+  Either<FailureDepartments, List<Department>> getAllDepartments();
+  Future<Either<FailureDepartments, Unit>> addDepartment(Department department);
   Future<Either<FailureDepartments, Unit>> deleteDepartment(String key);
 }

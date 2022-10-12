@@ -4,17 +4,17 @@ import 'package:dartz/dartz.dart';
 
 import '../../../../core/errors/errors.dart';
 import '../../../../core/utils/consts.dart';
+import '../../domain/entities/student.dart';
 import '../../domain/repositories/students_repository.dart';
-import '../../external/students_local_datasource.dart';
-import '../models/student_model.dart';
+import '../datasource/student_datasource.dart';
 
 class StudentsRepositoryImpl implements StudentsRepository {
   StudentsRepositoryImpl({required this.datasource});
-  final StudentsLocalDatasource datasource;
+  final StudentsDataSource datasource;
 
   @override
   Future<Either<FailureStudents, Unit>> addStudent(
-      {required StudentModel student, required String departmentKey}) async {
+      {required Student student, required String departmentKey}) async {
     try {
       final result = await datasource.addStudent(
           student: student, departmentKey: departmentKey);
@@ -45,7 +45,7 @@ class StudentsRepositoryImpl implements StudentsRepository {
 
   @override
   Future<Either<FailureStudents, Unit>> editStudent(
-      String key, StudentModel student) async {
+      String key, Student student) async {
     try {
       await datasource.editStudent(key, student);
       return const Right(unit);
@@ -58,7 +58,7 @@ class StudentsRepositoryImpl implements StudentsRepository {
   }
 
   @override
-  Either<FailureStudents, List<StudentModel>> getAllStudents(
+  Either<FailureStudents, List<Student>> getAllStudents(
       {required List<String> studentsUid}) {
     try {
       final result = datasource.getAllStudents(studentsUid: studentsUid);
@@ -72,7 +72,7 @@ class StudentsRepositoryImpl implements StudentsRepository {
   }
 
   @override
-  Future<Either<FailureStudents, StudentModel>> getStudent(String key) async {
+  Future<Either<FailureStudents, Student>> getStudent(String key) async {
     try {
       final result = await datasource.getStudent(key);
       return Right(result);

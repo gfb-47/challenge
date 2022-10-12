@@ -1,9 +1,5 @@
-import 'package:challenge/modules/students/presenter/list_students/list_students_page.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:get/get.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 import '../../../../core/utils/consts.dart';
 import 'add_student_controller.dart';
@@ -14,9 +10,9 @@ class AddStudentPage extends GetView<AddStudentController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xFFF68A0A),
+      backgroundColor: const Color(0xFFF68A0A),
       appBar: AppBar(
-        backgroundColor: Color(0xFFF68A0A),
+        backgroundColor: const Color(0xFFF68A0A),
         elevation: 0,
         title: const Text(
           'Add Student',
@@ -41,7 +37,7 @@ class AddStudentPage extends GetView<AddStudentController> {
                         left: 20,
                         right: 20,
                       ),
-                      decoration: BoxDecoration(
+                      decoration: const BoxDecoration(
                         color: Colors.white,
                         borderRadius: BorderRadius.only(
                           topLeft: Radius.circular(40),
@@ -52,7 +48,7 @@ class AddStudentPage extends GetView<AddStudentController> {
                         key: controller.addStudentFormKey,
                         child: Column(
                           children: <Widget>[
-                            SizedBox(
+                            const SizedBox(
                               height: 15,
                             ),
                             Row(
@@ -121,7 +117,7 @@ class AddStudentPage extends GetView<AddStudentController> {
                                                   style: ButtonStyle(
                                                     backgroundColor:
                                                         MaterialStateProperty
-                                                            .all(Color(
+                                                            .all(const Color(
                                                                 0xFFF68A0A)),
                                                     shape: MaterialStateProperty
                                                         .all(
@@ -154,7 +150,7 @@ class AddStudentPage extends GetView<AddStudentController> {
                                 ),
                               ],
                             ),
-                            SizedBox(height: 20),
+                            const SizedBox(height: 20),
                           ],
                         ),
                       ),
